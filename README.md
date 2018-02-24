@@ -2,7 +2,7 @@
 
 [![GitHub release](https://img.shields.io/github/release/sbstjn/github-releases-slack.svg)]()
 
-Configure a GitHub Webhook for new releases, and deploy an AWS Lambda function to notify a Slack channel about new software releases.
+Enable GitHub webhooks for new releases and deploy an AWS Lambda function to notify a Slack channel about new software releases.
 
 ## License
 
