@@ -1,0 +1,6 @@
+{
+  "text": "*<{{.URL}}|{{.FullName}}>*  `{{.Version}}`",
+  "as_user": true,
+  "channel": "{{.Channel}}",
+  "mrkdwn": true
+}
