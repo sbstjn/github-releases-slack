@@ -36,4 +36,3 @@ describe:
 
 outputs:
 	@make describe | jq -r '.Stacks[0].Outputs'
-
