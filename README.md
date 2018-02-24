@@ -6,6 +6,10 @@ Use AWS Lambda to notify a Slack channel about new releases of your GitHub proje
 
 ![Slack Messages about GitHub Releases](assets/preview.png)
 
+## Instructions
+
+[https://sbstjn.com/notify-slack-about-github-release-with-aws-lambda.html](https://sbstjn.com/notify-slack-about-github-release-with-aws-lambda.html)
+
 ## License
 
 Feel free to use the code, it's released using the [MIT license](LICENSE.md).
