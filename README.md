@@ -2,7 +2,7 @@
 
 [![GitHub release](https://img.shields.io/github/release/sbstjn/github-releases-slack.svg)]()
 
-Use AWS Lambda to notify a Slack channel about new software releases of your GitHub projects.
+Use AWS Lambda to notify a Slack channel about new releases of your GitHub projects.
 
 ## License
 
