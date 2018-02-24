@@ -15,12 +15,6 @@ type MessageTemplateData struct {
 	Channel  string
 }
 
-type Message struct {
-	Text     string `json:"text"`
-	Username string `json:"username"`
-	Markdown bool   `json:"mrkdwn"`
-}
-
 type MessageResponse struct {
 	OK bool `json:"ok"`
 }
