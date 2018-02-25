@@ -28,7 +28,7 @@ jobs:
           command: make dependencies
 
       - persist_to_workspace:
-          root: ~/repo
+          root: /go/src/github.com/sbstjn/github-releases-slack
           paths:
             - '*'
             - '*.*'
@@ -47,7 +47,7 @@ jobs:
             - v1-pkg-cache
 
       - attach_workspace:
-          at: ~/repo
+          at: /go/src/github.com/sbstjn/github-releases-slack
 
       - run:
           name: Run tests
@@ -62,14 +62,14 @@ jobs:
             - v1-pkg-cache
 
       - attach_workspace:
-          at: ~/repo
+          at: /go/src/github.com/sbstjn/github-releases-slack
 
       - run:
           name: Run tests
           command: make build
 
       - persist_to_workspace:
-          root: ~/repo
+          root: /go/src/github.com/sbstjn/github-releases-slack
           paths:
             - dist
 
