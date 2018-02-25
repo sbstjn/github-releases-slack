@@ -55,3 +55,16 @@ jobs:
           root: ~/repo
           paths:
             - dist
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - checkout
+      - test:
+          requires:
+            - checkout
+      - build:
+          requires:
+            - test
