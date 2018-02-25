@@ -30,7 +30,7 @@ jobs:
       - save_cache:
           key: v1-pkg-cache
           paths:
-            - "/go/pkg"
+            - "/go"
 
   test:
     <<: *defaults
@@ -53,7 +53,7 @@ jobs:
             - v1-pkg-cache
 
       - run:
-          name: Run tests
+          name: Build binary
           command: make build
 
 workflows:
