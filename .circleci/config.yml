@@ -81,6 +81,20 @@ workflows:
       - build:
           requires:
             - test
+  
+  release:
+    jobs:
+      - checkout:
+          <<: *releases
+      - test:
+          <<: *releases
+          requires:
+            - checkout
+      - build:
+          <<: *releases
+          requires:
+            - test
       - deploy:
+          <<: *releases
           requires:
             - build
