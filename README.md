@@ -1,8 +1,8 @@
 # Notify Slack about GitHub Release
 
 
-![CircleCI branch](https://img.shields.io/circleci/project/github/sbstjn/github-releases-slack/master.svg)
-![GitHub release](https://img.shields.io/github/release/sbstjn/github-releases-slack.svg)
+[![CircleCI branch](https://img.shields.io/circleci/project/github/sbstjn/github-releases-slack/master.svg)]()
+[![GitHub release](https://img.shields.io/github/release/sbstjn/github-releases-slack.svg)]()
 
 Use AWS Lambda to notify a Slack channel about new releases of your GitHub projects.
 
