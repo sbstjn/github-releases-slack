@@ -27,18 +27,17 @@ jobs:
           name: Install Dependencies
           command: make dependencies
 
-      - save_cache:
-          key: v1-pkg-cache
+      - persist_to_workspace:
+          root: .
           paths:
-            - "/go"
+            - .
 
   test:
     <<: *defaults
 
     steps:
-      - restore_cache:
-          keys:
-            - v1-pkg-cache
+      - attach_workspace:
+          at: .
 
       - run:
           name: Run tests
@@ -48,9 +47,8 @@ jobs:
     <<: *defaults
 
     steps:
-      - restore_cache:
-          keys:
-            - v1-pkg-cache
+      - attach_workspace:
+          at: .
 
       - run:
           name: Build binary
