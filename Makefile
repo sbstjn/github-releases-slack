@@ -9,11 +9,14 @@ test:
 build: clean
 	GOOS=linux go build -o dist/handler ./...
 
+dependencies:
+	go get github.com/aws/aws-lambda-go/{events,lambda}
+	touch .env
+
 configure:
 	@aws s3api create-bucket \
 		--bucket $(AWS_BUCKET_NAME) \
 		--region $(AWS_REGION)
-		--create-bucket-configuration LocationConstraint=$(AWS_REGION) \
 
 package: build
 	@aws cloudformation package \
