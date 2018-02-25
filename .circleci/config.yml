@@ -20,6 +20,10 @@ jobs:
       - checkout
 
       - run:
+          name: Create .env file
+          command: touch .env
+
+      - run:
           name: Install Dependencies
           command: make dependencies
 

@@ -11,7 +11,6 @@ build: clean
 
 dependencies:
 	go get github.com/aws/aws-lambda-go/{events,lambda}
-	touch .env
 
 configure:
 	@aws s3api create-bucket \
