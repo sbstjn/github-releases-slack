@@ -53,6 +53,17 @@ jobs:
           name: Build binary
           command: make build
 
+  deploy:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run:
+          name: Deploy
+          command: make deploy
+
 workflows:
   version: 2
 
