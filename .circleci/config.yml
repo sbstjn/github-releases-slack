@@ -27,6 +27,10 @@ jobs:
           name: Install Dependencies
           command: make dependencies
 
+      - run:
+          name: Run Glide
+          command: glide install
+
       - persist_to_workspace:
           root: .
           paths:
