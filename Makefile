@@ -10,7 +10,8 @@ build: clean
 	GOOS=linux go build -o dist/handler ./...
 
 dependencies:
-	go get github.com/aws/aws-lambda-go/{events,lambda}
+	go get github.com/aws/aws-lambda-go/events
+	go get github.com/aws/aws-lambda-go/lambda
 
 configure:
 	@aws s3api create-bucket \
