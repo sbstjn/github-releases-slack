@@ -27,12 +27,6 @@ jobs:
           name: Install Dependencies
           command: make dependencies
 
-      - persist_to_workspace:
-          root: /go/src/github.com/sbstjn/github-releases-slack
-          paths:
-            - '*'
-            - '*.*'
-
       - save_cache:
           key: v1-pkg-cache
           paths:
@@ -46,9 +40,6 @@ jobs:
           keys:
             - v1-pkg-cache
 
-      - attach_workspace:
-          at: /go/src/github.com/sbstjn/github-releases-slack
-
       - run:
           name: Run tests
           command: make test
@@ -61,17 +52,9 @@ jobs:
           keys:
             - v1-pkg-cache
 
-      - attach_workspace:
-          at: /go/src/github.com/sbstjn/github-releases-slack
-
       - run:
           name: Run tests
           command: make build
-
-      - persist_to_workspace:
-          root: /go/src/github.com/sbstjn/github-releases-slack
-          paths:
-            - dist
 
 workflows:
   version: 2
