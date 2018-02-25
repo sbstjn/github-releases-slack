@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/repo
+  working_directory: /go/src/github.com/sbstjn/github-releases-slack
   docker:
     - image: circleci/golang:latest
 
@@ -33,10 +33,19 @@ jobs:
             - '*'
             - '*.*'
 
+      - save_cache:
+          key: v1-pkg-cache
+          paths:
+            - "/go/pkg"
+
   test:
     <<: *defaults
 
     steps:
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+
       - attach_workspace:
           at: ~/repo
 
@@ -48,6 +57,10 @@ jobs:
     <<: *defaults
 
     steps:
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+
       - attach_workspace:
           at: ~/repo
 
