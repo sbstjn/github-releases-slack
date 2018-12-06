@@ -13,6 +13,7 @@ type MessageTemplateData struct {
 	URL      string
 	FullName string
 	Version  string
+	Notes    string
 	Channel  string
 }
 
@@ -32,6 +33,7 @@ func messageTemplateFromPayloadForChannel(payload Payload, channel string) Messa
 		payload.Repository.URL,
 		payload.Repository.FullName,
 		payload.Release.Name,
+		payload.Release.Body,
 		channel,
 	}
 }

@@ -1,5 +1,5 @@
 {
-  "text": "*<{{.URL}}|{{.FullName}}>*  `{{.Version}}`",
+  "text": "*<{{.URL}}|{{.FullName}}>*  `{{.Version}}`\n```{{.Notes}}```",
   "as_user": true,
   "channel": "{{.Channel}}",
   "mrkdwn": true
