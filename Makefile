@@ -1,41 +1,53 @@
-include .env
+PROJECT_NAME ?= github-releases-slack
+ENV ?= stable
+
+AWS_BUCKET_NAME ?= $(PROJECT_NAME)-artifacts-$(ENV)
+AWS_STACK_NAME ?= $(PROJECT_NAME)-stack-$(ENV)
+AWS_REGION ?= eu-west-1
+GOOS ?= linux
+
+FILE_TEMPLATE = infrastructure.yml
+FILE_PACKAGE = dist/package.yml
 
 clean:
-	rm -rf dist
+	@ rm -rf dist
+
+install:
+	@ dep ensure
 
 test:
-	go test
+	@ go test ./... -v
 
 build: clean
-	GOOS=linux go build -o dist/handler ./...
+	@ GOOS=$(GOOS) go build -o dist/handler ./...
 
-dependencies:
-	go get github.com/aws/aws-lambda-go/events
-	go get github.com/aws/aws-lambda-go/lambda
+build-osx: 
+	@ GOOS=darwin make build
 
 configure:
-	@aws s3api create-bucket \
+	@ aws s3api create-bucket \
 		--bucket $(AWS_BUCKET_NAME) \
 		--region $(AWS_REGION)
 
 package: build
-	@aws cloudformation package \
-		--template-file infrastructure.yml \
+	@ aws cloudformation package \
+		--template-file $(FILE_TEMPLATE) \
 		--s3-bucket $(AWS_BUCKET_NAME) \
 		--region $(AWS_REGION) \
-		--output-template-file dist/package.yml
+		--output-template-file $(FILE_PACKAGE)
 
 deploy: package
-	@aws cloudformation deploy \
-		--template-file dist/package.yml \
+	@ aws cloudformation deploy \
+		--template-file $(FILE_PACKAGE) \
 		--region $(AWS_REGION) \
 		--capabilities CAPABILITY_IAM \
 		--stack-name $(AWS_STACK_NAME)
 
 describe:
-	@aws cloudformation describe-stacks \
+	@ aws cloudformation describe-stacks \
 		--region $(AWS_REGION) \
 		--stack-name $(AWS_STACK_NAME)
 
 outputs:
-	@make describe | jq -r '.Stacks[0].Outputs'
+	@ make describe \
+		| jq -r '.Stacks[0].Outputs'
