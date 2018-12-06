@@ -29,6 +29,10 @@ func TestMessageTemplateFromPayload(t *testing.T) {
 			Date:       date,
 			Draft:      false,
 			Prerelease: false,
+			Author: PayloadReleaseAuthor{
+				Name: "sbstjn",
+				URL:  "https://github.com/sbstjn",
+			},
 		},
 		Repository: PayloadRepository{
 			Name:     "project",

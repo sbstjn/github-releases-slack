@@ -18,6 +18,8 @@ func TestPayloadRelease(t *testing.T) {
 	payload, err := parsePayload(data)
 
 	assert.Nil(t, err, "Cannot parse content")
+	assert.Equal(t, "sbstjn", payload.Release.Author.Name)
+	assert.Equal(t, "https://github.com/sbstjn", payload.Release.Author.URL)
 	assert.Equal(t, "v0.0.1", payload.Release.Name)
 	assert.Equal(t, "### Add\r\n\r\n* Initial commit", payload.Release.Body)
 	assert.Equal(t, false, payload.Release.Draft)

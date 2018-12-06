@@ -26,11 +26,18 @@ type PayloadRepository struct {
 
 // PayloadRelease contains data received from GitHub about the release
 type PayloadRelease struct {
-	Name       string    `json:"name"`
-	Body       string    `json:"body"`
-	Date       time.Time `json:"created_at"`
-	Draft      bool      `json:"draft"`
-	Prerelease bool      `json:"prerelease"`
+	Author     PayloadReleaseAuthor `json:"author"`
+	Name       string               `json:"name"`
+	Body       string               `json:"body"`
+	Date       time.Time            `json:"created_at"`
+	Draft      bool                 `json:"draft"`
+	Prerelease bool                 `json:"prerelease"`
+}
+
+// PayloadReleaseAuthor contains data received from GitHub about the release author
+type PayloadReleaseAuthor struct {
+	Name string `json:"login"`
+	URL  string `json:"html_url"`
 }
 
 func parsePayload(data []byte) (*Payload, error) {
