@@ -4,8 +4,7 @@ Resources:
   Handler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: dist
-      Handler: handler
+      Handler: dist/handler
       Runtime: go1.x
       Tracing: Active
       Events:
