@@ -4,7 +4,8 @@ Resources:
   Handler:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: dist/handler
+      CodeUri: dist
+      Handler: handler
       Runtime: go1.x
       Tracing: Active
       Events:
@@ -18,7 +19,7 @@ Outputs:
     Description: URL for HTTPS Endpoint
     Value:
       Fn::Join:
-        - ''
+        - ""
         - - https://
           - Ref: ServerlessRestApi
           - ".execute-api."
