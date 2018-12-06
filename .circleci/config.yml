@@ -39,6 +39,7 @@ jobs:
             - vendor
             - "*.go"
             - "fixtures/*.json"
+            - "templates/*.json"
 
   test:
     <<: *defaults

@@ -37,7 +37,7 @@ func messageTemplateFromPayloadForChannel(payload Payload, channel string) Messa
 }
 
 func messageFromTemplate(data MessageTemplateData) ([]byte, error) {
-	t, _ := template.ParseFiles("message.json")
+	t, _ := template.ParseFiles("templates/message.json")
 
 	var message bytes.Buffer
 	if err := t.Execute(&message, data); err != nil {
