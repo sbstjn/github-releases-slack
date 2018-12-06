@@ -34,11 +34,11 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
+            - fixtures
             - Makefile
+            - infrastructure.yml
             - vendor
             - "*.go"
-            - infrastructure.yml
-            - .git
 
   test:
     <<: *defaults
