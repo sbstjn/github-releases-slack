@@ -30,14 +30,14 @@ configure:
 		--region $(AWS_REGION) \
 		--create-bucket-configuration LocationConstraint=$(AWS_REGION)
 
-package: build
+package:
 	@ aws cloudformation package \
 		--template-file $(FILE_TEMPLATE) \
 		--s3-bucket $(AWS_BUCKET_NAME) \
 		--region $(AWS_REGION) \
 		--output-template-file $(FILE_PACKAGE)
 
-deploy: package
+deploy:
 	@ aws cloudformation deploy \
 		--template-file $(FILE_PACKAGE) \
 		--region $(AWS_REGION) \
