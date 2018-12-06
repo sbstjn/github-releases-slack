@@ -20,14 +20,14 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
+          key: deps-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
 
       - run:
           name: Install dependencies
           command: make install
 
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
+          key: deps-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
           paths:
             - vendor
 
