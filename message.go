@@ -8,6 +8,7 @@ import (
 	"text/template"
 )
 
+// MessageTemplateData contains data sent to Slack
 type MessageTemplateData struct {
 	URL      string
 	FullName string
@@ -15,6 +16,7 @@ type MessageTemplateData struct {
 	Channel  string
 }
 
+// MessageResponse contains data received from Slack
 type MessageResponse struct {
 	OK bool `json:"ok"`
 }

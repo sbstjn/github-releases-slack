@@ -6,6 +6,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 )
 
+// Request contains data from API Gateway invocation parameters
 type Request struct {
 	Token   string
 	Channel string

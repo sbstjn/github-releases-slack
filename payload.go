@@ -5,22 +5,26 @@ import (
 	"time"
 )
 
+// Payload contains data received from GitHub
 type Payload struct {
 	Release    PayloadRelease    `json:"release"`
 	Repository PayloadRepository `json:"repository"`
 	Sender     PayloadSender     `json:"sender"`
 }
 
+// PayloadSender contains data received from GitHub about the user
 type PayloadSender struct {
 	Name string `json:"login"`
 }
 
+// PayloadRepository contains data received from GitHub about the repository
 type PayloadRepository struct {
 	Name     string `json:"name"`
 	FullName string `json:"full_name"`
 	URL      string `json:"html_url"`
 }
 
+// PayloadRelease contains data received from GitHub about the release
 type PayloadRelease struct {
 	Name       string    `json:"name"`
 	Body       string    `json:"body"`
