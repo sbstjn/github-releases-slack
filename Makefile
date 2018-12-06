@@ -2,7 +2,7 @@ PROJECT_NAME ?= github-releases-slack
 ENV ?= stable
 
 AWS_BUCKET_NAME ?= $(PROJECT_NAME)-artifacts-$(ENV)
-AWS_STACK_NAME ?= $(PROJECT_NAME)-stack-$(ENV)
+AWS_STACK_NAME ?= $(PROJECT_NAME)-$(ENV)
 AWS_REGION ?= eu-west-1
 GOOS ?= linux
 
@@ -27,7 +27,8 @@ build-osx:
 configure:
 	@ aws s3api create-bucket \
 		--bucket $(AWS_BUCKET_NAME) \
-		--region $(AWS_REGION)
+		--region $(AWS_REGION) \
+		--create-bucket-configuration LocationConstraint=$(AWS_REGION)
 
 package: build
 	@ aws cloudformation package \
