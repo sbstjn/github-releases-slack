@@ -7,7 +7,7 @@ AWS_REGION ?= eu-west-1
 GOOS ?= linux
 
 FILE_TEMPLATE = infrastructure.yml
-FILE_PACKAGE = dist/package.yml
+FILE_PACKAGE = package.yml
 
 clean:
 	@ rm -rf dist
