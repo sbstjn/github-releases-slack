@@ -19,10 +19,26 @@ jobs:
     steps:
       - checkout
 
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
+
+      - run:
+          name: Install dependencies
+          command: make install
+
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "Gopkg.toml" }}
+          paths:
+            - vendor
+
       - persist_to_workspace:
           root: .
           paths:
-            - .
+            - Makefile
+            - vendor
+            - "*.go"
+            - infrastructure.yml
+            - .git
 
   test:
     <<: *defaults
